@@ -7,6 +7,7 @@ class Category(models.Model):
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     slug = models.SlugField(unique=True)
+    NAME_MAX_LENGTH = 128
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -23,5 +24,6 @@ class Page(models.Model):
     title = models.CharField(max_length=128)
     url = models.URLField()
     views = models.IntegerField(default=0)
+    TITLE_MAX_LENGTH = 128
     def __str__(self):
         return self.title
